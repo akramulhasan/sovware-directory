@@ -6,7 +6,9 @@ if(!class_exists(SOV_Directory_Post_Type)){
         }
 
         public function create_post_type(){
-            
+            register_post_type('sov-directory', array(
+
+            ));
         }
     }
 }
