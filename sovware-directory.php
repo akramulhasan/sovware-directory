@@ -34,7 +34,7 @@ if( !class_exists('SOV_Directory') ){
         // will fire this method when plugin activated
         public static function activate(){
 
-            //update 'rewrite_rules' fileds on options table to save the permalinks automatically when plugin activated to avoid 404 issue for Custom Post Type archve page
+            // update 'rewrite_rules' fileds on options table to save the permalinks automatically when plugin activated to avoid 404 issue for Custom Post Type archve page
             update_option( 'rewrite_rules', '' );
         }
 
