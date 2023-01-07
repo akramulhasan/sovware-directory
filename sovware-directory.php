@@ -23,6 +23,10 @@ if( !class_exists('SOV_Directory') ){
 
             $this->define_const();
 
+            // directory POST TYPE class file included and initialized
+            require_once(SOV_DIREC_PATH.'post-types/class.sov-directory-cpt.php');
+            $sov_directory_post_type = new SOV_Directory_Post_Type();
+
             // require_once(WPFY_SLIDER_PATH.'post-types/class.wpfy-slider-cpt.php');
             // $wpfy_slider_post_type = new WPFY_Slider_Post_Type();
 
@@ -49,9 +53,9 @@ if( !class_exists('SOV_Directory') ){
         // }
 
         public function define_const(){
-            define('SOV_DIC_PATH', plugin_dir_path( __FILE__ ));
-            define('SOV_DIC_URL', plugin_dir_url( __FILE__ ));
-            define('SOV_DIC_VERSION', '1.0');
+            define('SOV_DIREC_PATH', plugin_dir_path( __FILE__ ));
+            define('SOV_DIREC_URL', plugin_dir_url( __FILE__ ));
+            define('SOV_DIREC_VERSION', '1.0');
         }
     }
 }
