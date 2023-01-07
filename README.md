@@ -3,3 +3,5 @@ This is a simple and clean directory pluign by which user can submit their own s
 
 # REST API integrated
 Frontend submission and query both happening with REST api
+
+# Demo title
