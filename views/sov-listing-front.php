@@ -1,47 +1,30 @@
-
 <?php
+// Make a GET request to the WordPress REST API to fetch the Directory Post Type data
+$response = wp_remote_get( 'http://fictional-university.local/wp-json/wp/v2/sov_dirlist' );
 
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://fictional-university.local/wp-json/wp/v2/sov_dirlist",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "GET",
-//   CURLOPT_HTTPHEADER => array(
-//     "x-rapidapi-host: unogsng.p.rapidapi.com",
-//     "x-rapidapi-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-//   ),
-));
-
-$services = curl_exec($curl);
-$serviceArr = json_decode($services);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-
-   foreach($serviceArr as $service){
-//     echo '<pre>';
-// print_r($service);
-//    echo '</pre>';
-   }
-
+// Check for errors
+if ( is_wp_error( $response ) ) {
+  return 'Something went wrong';
 }
+
+// Decode the body of the response
+$post_data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+// Extract the Directory Post Type data
+// $title = $post_data['title']['rendered'];
+// $content = $post_data['content']['rendered'];
+
+//var_dump($post_data);
 ?>
+
+
 <div class="listing-wrapper">
-    <?php foreach($serviceArr as $service) : ?>
+    <?php foreach($post_data as $data) : ?>
     <div class="service">
         <img src="" alt="">
-        <h2><?php esc_html_e($service->title->rendered, 'sov-directory'); ?></h2>
-        <?php echo ($service->content->rendered); ?>
+        <h2><?php esc_html_e($data['title']['rendered'], 'sov-directory'); ?></h2>
+        <?php _e(sanitize_text_field($data['content']['rendered']),'sov-directory'); ?>
+        
     </div>
     <?php endforeach; ?>
 </div>
