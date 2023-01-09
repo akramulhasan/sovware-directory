@@ -28,6 +28,11 @@ if( !class_exists('SOV_Directory') ){
             $sov_directory_post_type = new SOV_Directory_Post_Type();
 
 
+            // directory POST TYPE New Rest Field class file included and initialized
+            require_once(SOV_DIREC_PATH.'post-types/class.sov-directory-rest-field.php');
+            $sov_directory_rest_field = new SOV_Directory_Rest_Field();
+
+
             require_once(SOV_DIREC_PATH.'shortcodes/class.sov-listing-shortcode.php');
             $sov_listing_shortcode = new SOV_Listing_shortcode();
 
