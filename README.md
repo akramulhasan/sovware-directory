@@ -5,3 +5,5 @@ This is a simple and clean directory pluign by which user can submit their own s
 Frontend submission and query both happening with REST api
 
 # Demo title
+
+# curl added to fetch data
