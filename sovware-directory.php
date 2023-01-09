@@ -27,6 +27,10 @@ if( !class_exists('SOV_Directory') ){
             require_once(SOV_DIREC_PATH.'post-types/class.sov-directory-cpt.php');
             $sov_directory_post_type = new SOV_Directory_Post_Type();
 
+
+            require_once(SOV_DIREC_PATH.'shortcodes/class.sov-listing-shortcode.php');
+            $sov_listing_shortcode = new SOV_Listing_shortcode();
+
             // require_once(WPFY_SLIDER_PATH.'post-types/class.wpfy-slider-cpt.php');
             // $wpfy_slider_post_type = new WPFY_Slider_Post_Type();
 
