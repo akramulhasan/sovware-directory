@@ -29,9 +29,9 @@ if ($err) {
 } else {
 
    foreach($serviceArr as $service){
-    echo '<pre>';
-print_r($service);
-   echo '</pre>';
+//     echo '<pre>';
+// print_r($service);
+//    echo '</pre>';
    }
 
 }
