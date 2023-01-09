@@ -7,3 +7,5 @@ Frontend submission and query both happening with REST api
 # Demo title
 
 # curl added to fetch data
+
+# Replace curl with wp_remote_get
