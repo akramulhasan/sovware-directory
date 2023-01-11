@@ -23,6 +23,9 @@ if( !class_exists('SOV_Directory') ){
 
             $this->define_const();
 
+            // Enquery scripts
+            add_action('wp_enqueue_scripts', array($this, 'load_assets'));
+
             // directory POST TYPE class file included and initialized
             require_once(SOV_DIREC_PATH.'post-types/class.sov-directory-cpt.php');
             $sov_directory_post_type = new SOV_Directory_Post_Type();
@@ -42,6 +45,11 @@ if( !class_exists('SOV_Directory') ){
             // require_once(WPFY_SLIDER_PATH.'class.wpfy-slider-settings.php');
             // $wpfy_slider_settings = new WPFY_Slider_Settings();
             
+        }
+
+        // enqueue method
+        public function load_assets(){
+            wp_enqueue_script( 'rest-ajax', SOV_DIREC_URL.'assets/js/rest-ajax.js', array('jquery'), null, true );
         }
 
         // will fire this method when plugin activated
