@@ -1,1 +1,1 @@
-alert("I am from rest-ajax");
+jQuery(document).ready(function ($) {});

@@ -49,6 +49,7 @@ if( !class_exists('SOV_Directory') ){
 
         // enqueue method
         public function load_assets(){
+            wp_enqueue_style( 'listing', SOV_DIREC_URL.'assets/css/listing.css', null, null);
             wp_enqueue_script( 'rest-ajax', SOV_DIREC_URL.'assets/js/rest-ajax.js', array('jquery'), null, true );
         }
 

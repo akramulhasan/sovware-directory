@@ -1,0 +1,18 @@
+.listing-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  justify-content: space-between;
+}
+.service {
+  width: 23%;
+}
+
+.service img {
+  width: 100%;
+}
+
+.service h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
