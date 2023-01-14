@@ -16,3 +16,77 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+/* User Listing */
+.thumb img {
+  max-width: 150px;
+}
+ul.mylisting-wrapper {
+  list-style: none;
+}
+li.item {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 40px;
+  align-items: center;
+  border-radius: 2px;
+  -webkit-box-shadow: -4px -1px 34px -7px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: -4px -1px 34px -7px rgba(0, 0, 0, 0.57);
+  box-shadow: -4px -1px 34px -7px rgba(0, 0, 0, 0.57);
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+}
+input.listing-title-field {
+  border: none;
+  font-size: 22px;
+  background: none;
+  padding: 10px 15px;
+  margin: 10px 0;
+}
+.contents textarea {
+  background: none;
+  border: none;
+  resize: none;
+  padding: 10px 15px;
+}
+.active-field {
+  border: 1px solid rgb(187, 187, 187) !important;
+}
+
+.update-btn {
+  display: none;
+  padding: 10px 0;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.update-btn-visible {
+  display: block;
+}
+
+/* new service form  */
+.new-listing-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #e1e1e1;
+  padding: 20px;
+}
+.new-listing-wrapper input {
+  margin: 10px 0;
+}
+.new-listing-title,
+.new-listing-body,
+.new-listing-submit {
+  padding: 10px 15px;
+}
+
+.new-listing-wrapper label {
+  margin-top: 10px;
+}

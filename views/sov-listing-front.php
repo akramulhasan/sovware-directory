@@ -13,8 +13,7 @@ $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
 //var_dump($post_data);
 
 ?>
-
-
+<!-- All listing -->
 <div class="listing-wrapper">
     <?php foreach($post_data as $data) : ?>
     <div class="service">
