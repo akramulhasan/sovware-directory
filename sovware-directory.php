@@ -35,6 +35,10 @@ if( !class_exists('SOV_Directory') ){
             require_once(SOV_DIREC_PATH.'post-types/class.sov-directory-rest-field.php');
             $sov_directory_rest_field = new SOV_Directory_Rest_Field();
 
+            // directory POST TYPE custom endpoint api class file included and initialized
+            require_once(SOV_DIREC_PATH.'inc/class.sov-directory-api.php');
+            $sov_directory_api = new SOV_Directory_api();
+
 
             require_once(SOV_DIREC_PATH.'shortcodes/class.sov-listing-shortcode.php');
             $sov_listing_shortcode = new SOV_Listing_shortcode();
