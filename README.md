@@ -11,3 +11,5 @@ Frontend submission and query both happening with REST api
 # Replace curl with wp_remote_get
 
 # Front end submission with ajax and rest api
+
+# Custom endpoint registered
