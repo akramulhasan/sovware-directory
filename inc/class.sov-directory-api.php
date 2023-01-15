@@ -11,9 +11,16 @@ if(!class_exists('SOV_Directory_api')){
             register_rest_route( 'sov-directory/v1', 'posts', array(
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => array($this, 'sov_directory_get_all_post'),
-                'permission_callback' => array($this, 'sov_post_submit_permission')
+                'permission_callback' => array($this, 'sov_post_get_permission')
             ) );
         }
+
+        // Method for GET request permission
+        public function sov_post_get_permission(){
+            return true;
+        }
+
+
 
         // Method for new endpoint for submit a post
         public function sov_directory_post_api(){
@@ -22,6 +29,16 @@ if(!class_exists('SOV_Directory_api')){
                 'callback' => array($this, 'sov_directory_submit_post'),
                 'permission_callback' => array($this, 'sov_post_submit_permission')
             ) );
+        }
+
+        // Method for POST request permission
+        public function sov_post_submit_permission(){
+            
+            // e.g. check if current user has the necessary capability
+            if( current_user_can( 'edit_posts' ) ) {
+                return true;
+            }
+            return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do this.' ), array( 'status' => 403 ) );
         }
 
         // Method to get all posts
@@ -75,16 +92,6 @@ if(!class_exists('SOV_Directory_api')){
         
             set_post_thumbnail( $post_id, $image_id );
             return get_post( $post_id );
-        }
-
-
-        public function sov_post_submit_permission(){
-            
-            // e.g. check if current user has the necessary capability
-            if( current_user_can( 'edit_posts' ) ) {
-                return true;
-            }
-            return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do this.' ), array( 'status' => 403 ) );
         }
 
     }
