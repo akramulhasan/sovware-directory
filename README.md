@@ -12,4 +12,6 @@ Frontend submission and query both happening with REST api
 
 # Front end submission with ajax and rest api
 
-# Custom endpoint registered
+# Custom endpoint registered for fetching posts
+
+## Custom endpoint starting for submit a post
