@@ -64,7 +64,7 @@ jQuery(document).ready(function ($) {
           featured_media: response.id,
         };
         var featuredImageUrl = response.guid.raw;
-
+        var encodedPostObj = JSON.stringify(createPostObj);
         // Empty the upload filed once submit done
         $(".post-thumb").val("");
 
@@ -73,21 +73,24 @@ jQuery(document).ready(function ($) {
           beforeSend: function (xhr) {
             xhr.setRequestHeader("X-WP-Nonce", sovObj.restNonce);
           },
-          url: sovObj.restURL + "wp/v2/sov_dirlist/",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          url: sovObj.restURL + "sov-directory/v1/posts",
           type: "POST",
-          data: createPostObj,
+          data: encodedPostObj,
           success: function (response) {
             $(".new-listing-title, .new-listing-body").val("");
             $(`
-              <li data-id="${response.id}" class="item">
+              <li data-id="${response.ID}" class="item">
                 <div class="thumb">
                 <img src=${featuredImageUrl} />
-                
+
                 </div>
                 <div class="contents">
-                    <input readonly class="listing-title-field" type="text" value="${response.title.raw}" />
+                    <input readonly class="listing-title-field" type="text" value="${response.post_title}" />
 
-                    <textarea class="listing-body-field" readonly name="" id="" cols="30" rows="10">${response.content.raw}</textarea>
+                    <textarea class="listing-body-field" readonly name="" id="" cols="30" rows="10">${response.post_content}</textarea>
                     <button class="update-btn">Save</button>
                 </div>
                 <div class="actions">
