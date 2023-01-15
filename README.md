@@ -15,3 +15,4 @@ Frontend submission and query both happening with REST api
 # Custom endpoint registered for fetching posts
 
 ## Custom endpoint starting for submit a post
+### callback_permission applied
