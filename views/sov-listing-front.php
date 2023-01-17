@@ -1,6 +1,20 @@
 <?php
-// Make a GET request to the plugin's custom endpoint
-$response = wp_remote_get( get_rest_url().'sov-directory/v1/posts' );
+// Get url parameters and extract current page for pagination
+$current_url = $_SERVER['REQUEST_URI'];
+$parts = explode('/', $current_url);
+$page_number = str_replace('page/', '', $parts[count($parts) - 1]);
+$currentPage = get_query_var('paged');
+
+// Insert the $currentPage into an array for sending to custom endpoint
+$args = array(
+  'paged' => $currentPage,
+);
+
+// api endpoint url
+$api_endpoint = get_rest_url().'sov-directory/v1/posts';
+
+// Make a GET request to the plugin's custom endpoint with arguments
+$response = wp_remote_get( add_query_arg( $args, $api_endpoint ) );
 
 // Check for errors
 if ( is_wp_error( $response ) ) {
@@ -24,4 +38,7 @@ $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
         
     </div>
     <?php endforeach; ?>
+    <div class="pagination">
+      <?php next_posts_link('Next', $data['totalPages']) ?>
+    </div>
 </div>

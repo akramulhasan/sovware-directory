@@ -8,6 +8,7 @@ if(!class_exists('SOV_Directory_api')){
 
         // Method to register new route and endpoint for fetching posts
         public function sov_directory_get_api(){
+
             register_rest_route( 'sov-directory/v1', 'posts', array(
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => array($this, 'sov_directory_get_all_post'),
@@ -42,16 +43,27 @@ if(!class_exists('SOV_Directory_api')){
         }
 
         // Method to get all posts
-        public function sov_directory_get_all_post(){
+        public function sov_directory_get_all_post($request){
+
+            //$parameters = $request->get_url_params();
+            $parameters = $request->get_query_params();
+            //$parameters = $request->get_body_params();
+            //$parameters = $request->get_json_params();
+            //$parameters = $request->get_default_params();
+            $paged = $_REQUEST['paged'];
+            // All incoming data sanitized
+             $data = $request->get_json_params();
+            // $title = sanitize_text_field( $data['title'] );
             $arg = array(
                 'post_type' => 'sov_dirlist',
                 'posts_per_page' => 4,
-                'paged' => 3
+                'paged' => $paged
+                
 
             );
-            $paged = get_query_var('paged');
+            //$paged = get_query_var('paged');
             $directory_posts = new WP_Query($arg);
-            
+            $totalPages = ceil($directory_posts->found_posts / 4);
             $outPutObjArr = [];
             while($directory_posts->have_posts()){
                 $directory_posts->the_post();
@@ -62,13 +74,17 @@ if(!class_exists('SOV_Directory_api')){
                     'date' => get_the_date(),
                     'status' => get_post_status(),
                     'image' => wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ),
+                    'totalPages' => $totalPages
                    
                 ));
+
+                
             }
 
 
 
             return $outPutObjArr;
+            //return $paged;
         }
 
         // Method to submit a post
