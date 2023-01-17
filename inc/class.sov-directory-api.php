@@ -50,17 +50,17 @@ if(!class_exists('SOV_Directory_api')){
             //$parameters = $request->get_body_params();
             //$parameters = $request->get_json_params();
             //$parameters = $request->get_default_params();
+
+            // Get the current page number
             $paged = $_REQUEST['paged'];
-            // All incoming data sanitized
-             $data = $request->get_json_params();
-            // $title = sanitize_text_field( $data['title'] );
+            
+            // Set the $args for custom query
             $arg = array(
                 'post_type' => 'sov_dirlist',
                 'posts_per_page' => 4,
                 'paged' => $paged
-                
-
             );
+            
             //$paged = get_query_var('paged');
             $directory_posts = new WP_Query($arg);
             $totalPages = ceil($directory_posts->found_posts / 4);
