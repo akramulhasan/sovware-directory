@@ -1,8 +1,8 @@
 .listing-wrapper {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 15px;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 15px;
 }
 .service {
   width: 23%;

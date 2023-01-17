@@ -1,5 +1,5 @@
 <?php
-// Make a GET request to the WordPress REST API to fetch the Directory Post Type data
+// Make a GET request to the plugin's custom endpoint
 $response = wp_remote_get( get_rest_url().'sov-directory/v1/posts' );
 
 // Check for errors
@@ -16,6 +16,7 @@ $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
 <!-- All listing -->
 <div class="listing-wrapper">
     <?php foreach($post_data as $data) : ?>
+      <?php //var_dump($data) ?>
     <div class="service">
         <img src="<?php echo esc_url($data['image']); ?>" alt="">
         <h2><?php esc_html_e($data['title'], 'sov-directory'); ?></h2>

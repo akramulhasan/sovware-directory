@@ -45,9 +45,11 @@ if(!class_exists('SOV_Directory_api')){
         public function sov_directory_get_all_post(){
             $arg = array(
                 'post_type' => 'sov_dirlist',
-                'posts_per_page' => -1,
+                'posts_per_page' => 4,
+                'paged' => 3
 
             );
+            $paged = get_query_var('paged');
             $directory_posts = new WP_Query($arg);
             
             $outPutObjArr = [];
@@ -59,7 +61,8 @@ if(!class_exists('SOV_Directory_api')){
                     'author' => get_the_author(),
                     'date' => get_the_date(),
                     'status' => get_post_status(),
-                    'image' => wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) )
+                    'image' => wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ),
+                   
                 ));
             }
 
@@ -70,10 +73,12 @@ if(!class_exists('SOV_Directory_api')){
 
         // Method to submit a post
         public function sov_directory_submit_post($request){
+
+            // All incoming data sanitized
             $data = $request->get_json_params();
             $title = sanitize_text_field( $data['title'] );
             $content = wp_kses_post( $data['content'] );
-            $image_id = $data['featured_media'];
+            $image_id = absint( $data['featured_media'] );
         
             $post_id = wp_insert_post( array(
                 'post_title' => $title,
