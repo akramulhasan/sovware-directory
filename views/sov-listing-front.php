@@ -38,7 +38,11 @@ $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
         
     </div>
     <?php endforeach; ?>
-    <div class="pagination">
-      <?php next_posts_link('Next', $data['totalPages']) ?>
-    </div>
+
+</div>
+<div class="pagination">
+      <?php //next_posts_link('Next', $data['totalPages']) ?>
+      <?php echo paginate_links(array(
+        'total' => $data['totalPages']
+      )) ?>
 </div>

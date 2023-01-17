@@ -39,9 +39,17 @@ if( !class_exists('SOV_Directory') ){
             require_once(SOV_DIREC_PATH.'inc/class.sov-directory-api.php');
             $sov_directory_api = new SOV_Directory_api();
 
-
+            // including shortcode class file and initialized
             require_once(SOV_DIREC_PATH.'shortcodes/class.sov-listing-shortcode.php');
             $sov_listing_shortcode = new SOV_Listing_shortcode();
+
+            // directory lists in admin file included
+            require_once(SOV_DIREC_PATH.'admin/sov-directory-admin-list.php');
+
+            // including admin menu class file and initialized
+            require_once(SOV_DIREC_PATH.'admin/class.sov-directory-admin-menu.php');
+            $sov_admin_menu = new SOV_admin_menu();
+          
 
             // require_once(WPFY_SLIDER_PATH.'post-types/class.wpfy-slider-cpt.php');
             // $wpfy_slider_post_type = new WPFY_Slider_Post_Type();
