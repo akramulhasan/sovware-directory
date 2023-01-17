@@ -82,11 +82,12 @@ class Sov_Directory_List extends WP_List_Table {
 
     function column_title($item) {
         $actions = array(
-            'edit'      => sprintf('<a href="?page=%s&action=%s&book=%s">Edit</a>',$_REQUEST['page'],'edit',$item['ID']),
-            'delete'    => sprintf('<a href="?page=%s&action=%s&book=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
+            'edit'      => sprintf('<a href="?page=%s&action=%s&movie=%s">Edit</a>',$_REQUEST['page'],'edit',$item['ID']),
+            'delete'    => sprintf('<a href="?page=%s&action=%s&movie=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
         );
         return sprintf('%1$s %2$s', $item['post_title'], $this->row_actions($actions) );
     }
+    
     
     
     function get_bulk_actions() {
@@ -98,13 +99,15 @@ class Sov_Directory_List extends WP_List_Table {
     
     
     function process_bulk_action() {
-        global $wpdb;
-        if ('delete' === $this->current_action()) {
-            $ids = isset($_REQUEST['book']) ? $_REQUEST['book'] : array();
-            if (is_array($ids)) $ids = implode(',', $ids);
-            if (!empty($ids)) {
-                $wpdb->query("DELETE FROM $wpdb->posts WHERE ID IN($ids)");
-            }
+        if ( 'edit' === $this->current_action() ) {
+            // code for handling the edit action goes here
+            $redirect = admin_url( 'admin.php?page=edit_custom_post_type&id=' . $_REQUEST['movie'] );
+            wp_redirect( $redirect );
+        } elseif ( 'delete' === $this->current_action() ) {
+            // code for handling the delete action goes here
+            wp_delete_post( $_REQUEST['movie'], true );
+            $redirect = admin_url( 'admin.php?page=list_custom_post_type' );
+            wp_redirect( $redirect );
         }
     }
     

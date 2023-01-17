@@ -27,7 +27,7 @@ if(!class_exists('SOV_admin_menu')){
             ?>
             <div class="wrap">
                 <div id="icon-users" class="icon32"></div>
-                <h2>My Custom Post Type</h2>
+                <h2>Sov Directory Service List</h2>
                 <form method="post">
                     <input type="hidden" name="page" value="my_list_test" />
                     <?php $sovDirectoryList->display() ?>
