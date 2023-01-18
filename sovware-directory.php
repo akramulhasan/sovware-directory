@@ -65,7 +65,9 @@ if( !class_exists('SOV_Directory') ){
             wp_enqueue_script( 'rest-ajax', SOV_DIREC_URL.'assets/js/rest-ajax.js', array('jquery'), null, true );
             wp_localize_script( 'rest-ajax', 'sovObj', array(
                 'restURL' => rest_url(),
-                'restNonce' => wp_create_nonce('wp_rest')
+                'restNonce' => wp_create_nonce('wp_rest'),
+                'pluginUrl' => SOV_DIREC_URL,
+                'ajaxurl' => admin_url( 'admin-ajax.php' )
 
             ) );
         }

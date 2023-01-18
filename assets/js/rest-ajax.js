@@ -190,4 +190,51 @@ jQuery(document).ready(function ($) {
       },
     });
   }
+
+  // Ajax Pagination Event
+  $(".pagination .page-numbers").click(function (e) {
+    e.preventDefault();
+    var page = $(this).text();
+    console.log(page);
+    $.ajax({
+      url: sovObj.restURL + "sov-directory/v1/posts/" + page,
+      type: "GET",
+      success: function (response) {
+        let html = "";
+        response.map(({ image, title }) => {
+          html += `
+            <div class="service inital">
+              <img src="${image}" alt="">
+              <h2>${title}</h2>
+            </div>
+          `;
+        });
+        $(".listing-wrapper").html(html);
+
+        // $.ajax({
+        //   type: "POST",
+        //   url: sovObj.pluginUrl + "views/sov-listing-front.php",
+        //   data: {
+        //     someData: "value",
+        //     anotherData: "another value",
+        //   },
+        //   success: function (response) {
+        //     // Handle the response here
+        //     console.log(sovObj.pluginUrl + "views/sov-listing-front.php");
+        //     console.log("data sent to php file");
+        //   },
+        // });
+
+        console.log("Pagination endpoint success");
+        console.log(response);
+
+        // Handle the response data here
+        // you can use jquery to append the new data in your post-listing div
+      },
+      error: function (error) {
+        // Handle any errors here
+        console.log("Pagination Failed");
+      },
+    });
+  });
 });

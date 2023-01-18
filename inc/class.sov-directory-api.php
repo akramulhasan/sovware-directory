@@ -4,6 +4,40 @@ if(!class_exists('SOV_Directory_api')){
         function __construct(){
             add_action('rest_api_init', array($this, 'sov_directory_get_api'));
             add_action('rest_api_init', array($this, 'sov_directory_post_api'));
+            add_action('rest_api_init', array($this, 'custom_post_type_endpoint'));
+        }
+        
+        function custom_post_type_endpoint() {
+            register_rest_route( 'sov-directory/v1', '/posts/(?P<page>\d+)', array(
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => array($this, 'get_dirlist_posts'),
+            ) );
+        }
+
+        function get_dirlist_posts( $request ) {
+        $page = $request['page'];
+        $args = array(
+        'post_type' => 'sov_dirlist',
+        'posts_per_page' => 4,
+        'paged' => $page,
+        );
+        $query = new WP_Query( $args );
+        $totalPages = ceil($query->found_posts / 4);
+        $posts = array();
+        if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $post = array(
+                'title' => get_the_title(),
+                'content' => get_the_content(),
+                'permalink' => get_the_permalink(),
+                'image' => wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ),
+                'totalPages' => $totalPages
+            );
+            array_push( $posts, $post );
+        }
+        }
+        return rest_ensure_response( $posts );
         }
 
         // Method to register new route and endpoint for fetching posts

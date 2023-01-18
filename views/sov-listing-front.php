@@ -24,14 +24,15 @@ if ( is_wp_error( $response ) ) {
 // Decode the body of the response
 $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
-//var_dump($post_data);
+// var_dump($post_data);
+// die();
 
 ?>
 <!-- All listing -->
 <div class="listing-wrapper">
     <?php foreach($post_data as $data) : ?>
       <?php //var_dump($data) ?>
-    <div class="service">
+    <div class="service inital">
         <img src="<?php echo esc_url($data['image']); ?>" alt="">
         <h2><?php esc_html_e($data['title'], 'sov-directory'); ?></h2>
         <?php //_e(sanitize_text_field($data['content']['rendered']),'sov-directory'); ?>
@@ -40,9 +41,11 @@ $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
     <?php endforeach; ?>
 
 </div>
+
 <div class="pagination">
-      <?php //next_posts_link('Next', $data['totalPages']) ?>
-      <?php echo paginate_links(array(
-        'total' => $data['totalPages']
-      )) ?>
+  <a href="#" class="prev page-numbers">&laquo;</a>
+    <?php for($i=1; $i<=$data['totalPages']; $i++) { ?>
+      <a href="#" class="page-numbers"><?php echo $i; ?></a>
+    <?php } ?>
+  <a href="#" class="next page-numbers">&raquo;</a>
 </div>
