@@ -192,9 +192,9 @@ jQuery(document).ready(function ($) {
   }
 
   // Ajax Pagination Event
-  $(".pagination .page-numbers").click(function (e) {
+  $(".pagination-wrapper").on("click", ".page-numbers", function (e) {
     e.preventDefault();
-    var page = $(this).text();
+    var page = $(this).text() || 1;
     console.log(page);
     $.ajax({
       url: sovObj.restURL + "sov-directory/v1/posts/" + page,
@@ -211,19 +211,46 @@ jQuery(document).ready(function ($) {
         });
         $(".listing-wrapper").html(html);
 
-        // $.ajax({
-        //   type: "POST",
-        //   url: sovObj.pluginUrl + "views/sov-listing-front.php",
-        //   data: {
-        //     someData: "value",
-        //     anotherData: "another value",
-        //   },
-        //   success: function (response) {
-        //     // Handle the response here
-        //     console.log(sovObj.pluginUrl + "views/sov-listing-front.php");
-        //     console.log("data sent to php file");
-        //   },
+        // Add some logic
+        // make current paginate link unclickable
+        //$('.unclickable-link').attr('href', 'javascript:void(0);');
+        // $(document).on("click", "a.page-numbers", function () {
+        //   $(this).attr("href", "javascript:void(0);");
         // });
+        // $(document).ajaxSuccess(function () {
+        //   setTimeout(function () {
+        //     $("a.page-numbers").click(function () {
+        //       $(this).addClass("hello");
+        //     });
+        //   }, 1000);
+        // });
+
+        // $(document).on("click", "a", function () {
+        //   $(this).attr("target", "_blank");
+        // });
+        // setTimeout(function () {
+        //   $("a.page-numbers").click(function () {
+        //     $(this).addClass("hello");
+        //   });
+        // }, 1000);
+
+        //Add pagination markup
+        var totalPages = response[0].totalPages;
+        var paginationMarkup = "";
+
+        for (var i = 1; i <= totalPages; i++) {
+          if (i == page) {
+            paginationMarkup +=
+              '<a href="javascript:void(0)" class="page-numbers active">' +
+              i +
+              "</a>";
+          } else {
+            paginationMarkup +=
+              '<a href="#" class="page-numbers">' + i + "</a>";
+          }
+        }
+
+        $(".pagination").html(paginationMarkup);
 
         console.log("Pagination endpoint success");
         console.log(response);

@@ -42,10 +42,11 @@ $post_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 </div>
 
-<div class="pagination">
-  <a href="#" class="prev page-numbers">&laquo;</a>
-    <?php for($i=1; $i<=$data['totalPages']; $i++) { ?>
-      <a href="#" class="page-numbers"><?php echo $i; ?></a>
-    <?php } ?>
-  <a href="#" class="next page-numbers">&raquo;</a>
+<div class="pagination-wrapper">
+  <div class="pagination">
+    
+      <?php for($i=1; $i<=$data['totalPages']; $i++) { ?>
+        <a href="#" class="page-numbers <?php echo $i == 1 ? 'active' : ''  ?>"><?php echo $i; ?></a>
+      <?php } ?>
+  </div>
 </div>

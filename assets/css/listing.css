@@ -86,7 +86,23 @@ input.listing-title-field {
 .new-listing-submit {
   padding: 10px 15px;
 }
-
+.listing-wrapper {
+  padding: 50px 0;
+  min-height: 245px;
+}
 .new-listing-wrapper label {
   margin-top: 10px;
+}
+.pagination-wrapper {
+  text-align: center;
+}
+.pagination .page-numbers {
+  padding: 10px;
+  background-color: rgba(115, 112, 112, 0.637);
+  margin: 0 5px;
+}
+.pagination .active {
+  color: #ffffff;
+  pointer-events: none;
+  text-decoration: none;
 }
