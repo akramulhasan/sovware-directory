@@ -19,4 +19,4 @@ Frontend submission and query both happening with REST api
 # Normal Pagination
 
 # Admin custom list table added
-# Ajax pagination api ready
+# Ajax pagination api ready and loading on frontend
