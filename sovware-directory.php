@@ -77,6 +77,10 @@ if( !class_exists('SOV_Directory') ){
 
             // update 'rewrite_rules' fileds on options table to save the permalinks automatically when plugin activated to avoid 404 issue for Custom Post Type archve page
             update_option( 'rewrite_rules', '' );
+
+            // give access to subscriber to upload image 
+            $subscriber = get_role( 'subscriber' );
+            $subscriber->add_cap( 'upload_files' );  
         }
 
         // will fire this method when plugin deactivated
@@ -103,8 +107,7 @@ if(class_exists('SOV_Directory')){
     register_deactivation_hook( __FILE__, array('SOV_Directory', 'deactivate'));
     register_uninstall_hook( __FILE__, array('SOV_Directory', 'uninstall'));
     $sov_directory= new SOV_Directory();
-
-    
+   
 }
 
 ?>

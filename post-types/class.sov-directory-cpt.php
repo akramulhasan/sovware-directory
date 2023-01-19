@@ -55,6 +55,12 @@ if(!class_exists('SOV_Directory_Post_Type')){
                 'exclude_from_search'   => false,
                 'publicly_queryable'    => true,
                 'capability_type'       => 'page',
+                'map_meta_cap' => true,
+                'capabilities' => array(
+                    'create_posts' => 'subscriber',
+                    'edit_posts' => 'subscriber',
+                    'delete_posts' => 'subscriber',
+                ),
                 'show_in_rest'          => true,
             );
             register_post_type( 'sov_dirlist', $args );

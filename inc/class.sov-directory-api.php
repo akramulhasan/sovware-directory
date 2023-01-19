@@ -11,6 +11,7 @@ if(!class_exists('SOV_Directory_api')){
             register_rest_route( 'sov-directory/v1', '/posts/(?P<page>\d+)', array(
             'methods' => WP_REST_Server::READABLE,
             'callback' => array($this, 'get_dirlist_posts'),
+            'permission_callback' => array($this, 'sov_post_get_permission')
             ) );
         }
 
@@ -73,7 +74,7 @@ if(!class_exists('SOV_Directory_api')){
             if( current_user_can( 'edit_posts' ) ) {
                 return true;
             }
-            return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do this.' ), array( 'status' => 403 ) );
+            return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do thisss.' ), array( 'status' => 403 ) );
         }
 
         // Method to get all posts
