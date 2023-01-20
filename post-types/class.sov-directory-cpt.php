@@ -41,7 +41,6 @@ if(!class_exists('SOV_Directory_Post_Type')){
                 'description'           => __( 'Sov directory service listing', 'sov-directory' ),
                 'labels'                => $labels,
                 'supports'              => array( 'title', 'editor', 'thumbnail' ),
-                'taxonomies'            => array( 'category', 'post_tag' ),
                 'hierarchical'          => false,
                 'public'                => true,
                 'show_ui'               => true,
@@ -54,13 +53,8 @@ if(!class_exists('SOV_Directory_Post_Type')){
                 'has_archive'           => true,
                 'exclude_from_search'   => false,
                 'publicly_queryable'    => true,
-                'capability_type'       => 'page',
+                'capability_type'       => 'post',
                 'map_meta_cap' => true,
-                'capabilities' => array(
-                    'create_posts' => 'subscriber',
-                    'edit_posts' => 'subscriber',
-                    'delete_posts' => 'subscriber',
-                ),
                 'show_in_rest'          => true,
             );
             register_post_type( 'sov_dirlist', $args );

@@ -49,13 +49,6 @@ if( !class_exists('SOV_Directory') ){
             // including admin menu class file and initialized
             require_once(SOV_DIREC_PATH.'admin/class.sov-directory-admin-menu.php');
             $sov_admin_menu = new SOV_admin_menu();
-          
-
-            // require_once(WPFY_SLIDER_PATH.'post-types/class.wpfy-slider-cpt.php');
-            // $wpfy_slider_post_type = new WPFY_Slider_Post_Type();
-
-            // require_once(WPFY_SLIDER_PATH.'class.wpfy-slider-settings.php');
-            // $wpfy_slider_settings = new WPFY_Slider_Settings();
             
         }
 
@@ -75,16 +68,24 @@ if( !class_exists('SOV_Directory') ){
         // will fire this method when plugin activated
         public static function activate(){
 
+            // Add a custom role
+            add_role( 'directory_manager', 'Directory Manager', array(
+                'read' => true,
+                'edit_posts' => true,
+                'delete_posts' => true,
+                'publish_posts' => true,
+                'upload_files' => true,
+            )); 
+
             // update 'rewrite_rules' fileds on options table to save the permalinks automatically when plugin activated to avoid 404 issue for Custom Post Type archve page
             update_option( 'rewrite_rules', '' );
-
-            // give access to subscriber to upload image 
-            $subscriber = get_role( 'subscriber' );
-            $subscriber->add_cap( 'upload_files' );  
+ 
         }
 
         // will fire this method when plugin deactivated
         public static function deactivate(){
+            // remove the custom role
+            remove_role( 'directory_manager' );
             flush_rewrite_rules();
         }
 
