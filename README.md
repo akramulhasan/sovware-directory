@@ -20,4 +20,4 @@ Frontend submission and query both happening with REST api
 
 # Admin custom list table added
 # Ajax pagination api ready and loading on frontend
-# Role and Capability
+# Custom Role and Capability
