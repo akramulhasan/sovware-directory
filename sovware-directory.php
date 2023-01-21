@@ -69,13 +69,26 @@ if( !class_exists('SOV_Directory') ){
         public static function activate(){
 
             // Add a custom role
-            add_role( 'directory_manager', 'Directory Manager', array(
-                'read' => true,
-                'edit_posts' => true,
-                'delete_posts' => true,
-                'publish_posts' => true,
-                'upload_files' => true,
-            )); 
+            add_role( 'directory_manager', 'Directory Manager');
+
+            // Add custom capabilities to new Role
+            $directory_manager = get_role( 'directory_manager' );
+            $directory_manager->add_cap('read');
+            $directory_manager->add_cap('edit_service');
+            $directory_manager->add_cap('edit_services');
+            $directory_manager->add_cap('upload_files');
+
+            // Add custom caps to Admin
+            $getAdmin = get_role('administrator');
+            $getAdmin->add_cap('edit_service');
+            $getAdmin->add_cap('edit_services');
+            $getAdmin->add_cap('edit_other_services');
+            $getAdmin->add_cap('edit_published_services');
+            $getAdmin->add_cap('publish_services');
+            $getAdmin->add_cap('delete_other_services');
+            $getAdmin->add_cap('delete_private_services');
+            $getAdmin->add_cap('delete_published_services');
+
 
             // update 'rewrite_rules' fileds on options table to save the permalinks automatically when plugin activated to avoid 404 issue for Custom Post Type archve page
             update_option( 'rewrite_rules', '' );
@@ -84,7 +97,7 @@ if( !class_exists('SOV_Directory') ){
 
         // will fire this method when plugin deactivated
         public static function deactivate(){
-            // remove the custom role
+            // remove the custom role                               
             remove_role( 'directory_manager' );
             flush_rewrite_rules();
         }

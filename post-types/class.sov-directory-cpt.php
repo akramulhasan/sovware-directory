@@ -53,8 +53,8 @@ if(!class_exists('SOV_Directory_Post_Type')){
                 'has_archive'           => true,
                 'exclude_from_search'   => false,
                 'publicly_queryable'    => true,
-                'capability_type'       => 'post',
-                'map_meta_cap' => true,
+                'capability_type'       => array('service','services'),
+                'map_meta_cap'          => true,
                 'show_in_rest'          => true,
             );
             register_post_type( 'sov_dirlist', $args );
