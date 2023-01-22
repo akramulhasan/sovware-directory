@@ -1,6 +1,4 @@
-<?php 
-
-
+<?php
 if(!is_user_logged_in()) : ?>
     <div>
         <form class="sov_reg_form" action="" method="post">
@@ -39,7 +37,6 @@ if(!is_user_logged_in()) : ?>
       
         </form>
     </div>
-    <h2>You have to login first</h2>'
     <?php else : ?>
     <!-- My Listing listing -->
     <div class="new-listing-wrapper">
@@ -82,7 +79,7 @@ if(!is_user_logged_in()) : ?>
     
                 <?php      }
             }else{
-                echo 'You haven\'t published a post yet';
+                echo '<span class="no-post"><span>';
             }
 
 

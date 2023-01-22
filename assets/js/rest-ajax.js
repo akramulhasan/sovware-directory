@@ -1,4 +1,7 @@
 jQuery(document).ready(function ($) {
+  if (!$(".mylisting-wrapper li").length > 0) {
+    $(".no-post").text("You have no item");
+  }
   console.log(sovObj);
   // delete event
   $(".mylisting-wrapper").on("click", ".delete-btn", deleteListing);
@@ -102,7 +105,9 @@ jQuery(document).ready(function ($) {
               .prependTo(".mylisting-wrapper")
               .hide()
               .slideDown();
-            console.log("Congrats Akramul, Post updated");
+            if ($(".mylisting-wrapper li").length > 0) {
+              $(".no-post").text("");
+            }
             console.log(response);
           },
           error: function (response) {
@@ -181,8 +186,10 @@ jQuery(document).ready(function ($) {
       type: "DELETE",
       success: function (response) {
         thisListing.slideUp();
-        console.log("Congrats Akramul, you did your first Ajax call ever");
-        console.log(response);
+
+        if (!$(".mylisting-wrapper li").length > 0) {
+          $(".no-post").text("You have no item");
+        }
       },
       error: function (response) {
         console.log("Sorry");

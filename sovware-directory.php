@@ -78,6 +78,7 @@ if( !class_exists('SOV_Directory') ){
             $directory_manager->add_cap('edit_published_services');
             $directory_manager->add_cap('publish_services');
             $directory_manager->add_cap('delete_services' );
+            $directory_manager->add_cap('delete_published_services' );
             $directory_manager->add_cap('delete_service' );
             $directory_manager->add_cap('upload_files');
             $directory_manager->remove_cap('read_service');
