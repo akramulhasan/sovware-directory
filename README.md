@@ -22,3 +22,4 @@ Frontend submission and query both happening with REST api
 # Ajax pagination api ready and loading on frontend
 # Custom Role and Capability extended
 # Custom Registration login and redirection
+## No post found message need to show with Ajax
