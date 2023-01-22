@@ -106,3 +106,22 @@ input.listing-title-field {
   pointer-events: none;
   text-decoration: none;
 }
+
+/* Registration Form  */
+form.sov_reg_form label {
+  display: block;
+  margin-bottom: 5px;
+}
+.sov_reg_form input {
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #80808059;
+  margin-bottom: 15px;
+}
+span.error-message {
+  color: red;
+}
+span.success {
+  color: rgba(10, 202, 10, 0.873);
+}

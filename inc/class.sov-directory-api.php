@@ -71,7 +71,7 @@ if(!class_exists('SOV_Directory_api')){
         public function sov_post_submit_permission(){
             
             // e.g. check if current user has the necessary capability
-            if( current_user_can( 'edit_posts' ) ) {
+            if( current_user_can( 'edit_services' ) ) {
                 return true;
             }
             return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do thisss.' ), array( 'status' => 403 ) );

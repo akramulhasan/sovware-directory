@@ -76,6 +76,8 @@ if( !class_exists('SOV_Directory') ){
             $directory_manager->add_cap('read');
             $directory_manager->add_cap('edit_service');
             $directory_manager->add_cap('edit_services');
+            $directory_manager->add_cap( 'delete_services' );
+            $directory_manager->add_cap( 'delete_service' );
             $directory_manager->add_cap('upload_files');
 
             // Add custom caps to Admin
