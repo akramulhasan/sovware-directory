@@ -58,7 +58,7 @@ if(!is_user_logged_in()) : ?>
                 'posts_per_page' => -1,
                 'author' => get_current_user_id()
             ));
-            if(have_posts(  )){
+            if($userListing->have_posts(  )){
                 while($userListing->have_posts(  )){
                     $userListing->the_post(); ?>
                     <li data-id="<?php echo get_the_id(); ?>" class="item">

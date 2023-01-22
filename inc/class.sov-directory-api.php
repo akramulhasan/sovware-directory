@@ -74,7 +74,7 @@ if(!class_exists('SOV_Directory_api')){
             if( current_user_can( 'edit_services' ) ) {
                 return true;
             }
-            return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do thisss.' ), array( 'status' => 403 ) );
+            return new WP_Error( 'rest_forbidden', __( 'You do not have permission to do this.' ), array( 'status' => 403 ) );
         }
 
         // Method to get all posts

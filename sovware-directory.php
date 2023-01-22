@@ -72,22 +72,26 @@ if( !class_exists('SOV_Directory') ){
             add_role( 'directory_manager', 'Directory Manager');
 
             // Add custom capabilities to new Role
-            $directory_manager = get_role( 'directory_manager' );
-            $directory_manager->add_cap('read');
+            $directory_manager = get_role('directory_manager');
             $directory_manager->add_cap('edit_service');
             $directory_manager->add_cap('edit_services');
-            $directory_manager->add_cap( 'delete_services' );
-            $directory_manager->add_cap( 'delete_service' );
+            $directory_manager->add_cap('edit_published_services');
+            $directory_manager->add_cap('publish_services');
+            $directory_manager->add_cap('delete_services' );
+            $directory_manager->add_cap('delete_service' );
             $directory_manager->add_cap('upload_files');
+            $directory_manager->remove_cap('read_service');
+            $directory_manager->remove_cap('read_services');
 
             // Add custom caps to Admin
             $getAdmin = get_role('administrator');
             $getAdmin->add_cap('edit_service');
             $getAdmin->add_cap('edit_services');
-            $getAdmin->add_cap('edit_other_services');
+            $getAdmin->add_cap('edit_others_service');
+            $getAdmin->add_cap('edit_others_services');
             $getAdmin->add_cap('edit_published_services');
             $getAdmin->add_cap('publish_services');
-            $getAdmin->add_cap('delete_other_services');
+            $getAdmin->add_cap('delete_others_services');
             $getAdmin->add_cap('delete_private_services');
             $getAdmin->add_cap('delete_published_services');
 
