@@ -16,7 +16,7 @@ if(!is_user_logged_in()) : ?>
                             // Assign the custom role to the user
                             $user = new WP_User($user_id);
                             $user->set_role('directory_manager');
-                            echo '<span class="success">You have successfully registered ! please <a href="'.wp_login_url(admin_url('edit.php?post_type=sov_dirlist')).'">Login</a> to submit your service</span>';
+                            echo '<span class="success">You have successfully registered ! please <a href="'.wp_login_url($_SERVER['HTTP_REFERER']).'">Login</a> to submit your service</span>';
                             // Redirect the user to a "thank you" page
                         }
                     }

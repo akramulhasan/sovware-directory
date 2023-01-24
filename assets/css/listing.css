@@ -9,7 +9,8 @@
 }
 
 .service img {
-  width: 100%;
+  width: 150px;
+  height: 150px;
 }
 
 .service h2 {
@@ -118,6 +119,11 @@ form.sov_reg_form label {
   border-radius: 4px;
   border: 1px solid #80808059;
   margin-bottom: 15px;
+  width: 80%;
+}
+input[type="submit"] {
+  width: auto;
+  cursor: pointer;
 }
 span.error-message {
   color: red;
