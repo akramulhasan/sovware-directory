@@ -24,3 +24,4 @@ Frontend submission and query both happening with REST api
 # Custom Registration login and redirection
 ## No post found message need to show with Ajax
 ## Redirect to frontend after login
+## After submit the service will be in under review by admin
