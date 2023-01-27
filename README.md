@@ -25,3 +25,4 @@ Frontend submission and query both happening with REST api
 ## No post found message need to show with Ajax
 ## Redirect to frontend after login
 ## After submit the service will be in under review by admin
+## If service status is private, need to show it in frontend list
