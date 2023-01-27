@@ -134,7 +134,7 @@ if(!class_exists('SOV_Directory_api')){
             $post_id = wp_insert_post( array(
                 'post_title' => $title,
                 'post_content' => $content,
-                'post_status' => 'publish',
+                'post_status' => 'private',
                 'post_type' => 'sov_dirlist',
             ) );
         

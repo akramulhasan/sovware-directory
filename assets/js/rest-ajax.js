@@ -63,7 +63,7 @@ jQuery(document).ready(function ($) {
         var createPostObj = {
           title,
           content,
-          status: "publish",
+          status: "private",
           featured_media: response.id,
         };
         var featuredImageUrl = response.guid.raw;
@@ -86,11 +86,13 @@ jQuery(document).ready(function ($) {
             $(".new-listing-title, .new-listing-body").val("");
             $(`
               <li data-id="${response.ID}" class="item">
+              
                 <div class="thumb">
                 <img src=${featuredImageUrl} />
 
                 </div>
                 <div class="contents">
+                <span class="post-status">This post under review</span>
                     <input readonly class="listing-title-field" type="text" value="${response.post_title}" />
 
                     <textarea class="listing-body-field" readonly name="" id="" cols="30" rows="10">${response.post_content}</textarea>

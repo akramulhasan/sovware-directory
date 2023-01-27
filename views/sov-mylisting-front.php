@@ -40,7 +40,7 @@ if(!is_user_logged_in()) : ?>
     <?php else : ?>
     <!-- My Listing listing -->
     <div class="new-listing-wrapper">
-        <h3>Add a your service</h3>
+        <h3>Add your service</h3>
         <input placeholder="title" class="new-listing-title" type="text" name="" id="">
         <textarea placeholder="Your service details.." class="new-listing-body" name=""></textarea>
         <label for="img">Featured Image:</label>

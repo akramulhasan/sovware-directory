@@ -88,12 +88,18 @@ if( !class_exists('SOV_Directory') ){
             $getAdmin = get_role('administrator');
             $getAdmin->add_cap('edit_service');
             $getAdmin->add_cap('edit_services');
+            $getAdmin->add_cap('read_private_service');
+            $getAdmin->add_cap('read_private_services');
+            $getAdmin->add_cap('edit_private_services');
+            $getAdmin->add_cap('edit_private_service');
             $getAdmin->add_cap('edit_others_service');
             $getAdmin->add_cap('edit_others_services');
             $getAdmin->add_cap('edit_published_services');
             $getAdmin->add_cap('publish_services');
             $getAdmin->add_cap('delete_others_services');
             $getAdmin->add_cap('delete_private_services');
+            $getAdmin->add_cap('publish_private_services');
+            $getAdmin->add_cap('delete_services');
             $getAdmin->add_cap('delete_published_services');
 
 
