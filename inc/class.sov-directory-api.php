@@ -19,11 +19,11 @@ if(!class_exists('SOV_Directory_api')){
         $page = $request['page'];
         $args = array(
         'post_type' => 'sov_dirlist',
-        'posts_per_page' => 4,
+        'posts_per_page' => 12,
         'paged' => $page,
         );
         $query = new WP_Query( $args );
-        $totalPages = ceil($query->found_posts / 4);
+        $totalPages = ceil($query->found_posts / 12);
         $posts = array();
         if ( $query->have_posts() ) {
         while ( $query->have_posts() ) {
@@ -92,13 +92,13 @@ if(!class_exists('SOV_Directory_api')){
             // Set the $args for custom query
             $arg = array(
                 'post_type' => 'sov_dirlist',
-                'posts_per_page' => 4,
+                'posts_per_page' => 12,
                 'paged' => $paged
             );
             
             //$paged = get_query_var('paged');
             $directory_posts = new WP_Query($arg);
-            $totalPages = ceil($directory_posts->found_posts / 4);
+            $totalPages = ceil($directory_posts->found_posts / 12);
             $outPutObjArr = [];
             while($directory_posts->have_posts()){
                 $directory_posts->the_post();

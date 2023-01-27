@@ -19,6 +19,12 @@
 }
 
 /* User Listing */
+span.post-status {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  color: #e20c0c;
+}
 .thumb img {
   max-width: 150px;
 }

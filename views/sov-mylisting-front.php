@@ -63,7 +63,8 @@ if(!is_user_logged_in()) : ?>
                             <?php the_post_thumbnail('thumbnail'); ?>
                         </div>
                         <div class="contents">
-                            <input readonly class="listing-title-field" type="text" value="<?php echo esc_attr(get_the_title()); ?>" />
+                            <span class="post-status"><?php echo get_post_status() === 'private' ? 'This post under review' : '' ?></span>
+                            <input readonly class="listing-title-field" type="text" value="<?php echo esc_attr(str_replace('Private:', '', get_the_title())); ?>" />
                             
                             <textarea class="listing-body-field" readonly name="" id="" cols="30" rows="10"><?php echo esc_attr(wp_strip_all_tags( get_the_content() )); ?></textarea>
                             <button class="update-btn">Save</button>
