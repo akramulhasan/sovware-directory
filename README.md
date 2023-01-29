@@ -17,7 +17,7 @@ By default, after submit a Service, it will be in private mode and once an admin
 
 # How to use?
 ## After install, admin should create 2 pages by using 2 shortcode.
-### [sov-my-listing] - This is for user front end submission. This page will show a Registration form and after registration will have a link to login. And after login user will redirected to this page and can submit their service. User can edit, delete their own items. Once Service submitted, it need to be approved by an Admin.
-### [sov-listing] - This will show all submitted and approved service items.
+1. [sov-my-listing] - This is for user front end submission. This page will show a Registration form and after registration will have a link to login. And after login user will redirected to this page and can submit their service. User can edit, delete their own items. Once Service submitted, it need to be approved by an Admin.
+2. [sov-listing] - This will show all submitted and approved service items.
 
 
