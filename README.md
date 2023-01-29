@@ -1,28 +1,16 @@
 # sovware-directory
 This is a simple and clean directory pluign by which user can submit their own services to the listing.
 
-# REST API integrated
-Frontend submission and query both happening with REST api
+# High level overview of the features:
+## REST API integrated
+Frontend submission and query in font end both happening with REST api custom endpoint. Ajax pagination also powered by Rest API. Ensure proper security by applying callback_permission
 
-# Demo title
 
-# curl added to fetch data
-
-# Replace curl with wp_remote_get
-
-# Front end submission with ajax and rest api
-
-# Custom endpoint registered for fetching posts
-
-## Custom endpoint starting for submit a post
-### callback_permission applied
-# Normal Pagination
-
-# Admin custom list table added
-# Ajax pagination api ready and loading on frontend
-# Custom Role and Capability extended
-# Custom Registration login and redirection
-## No post found message need to show with Ajax
-## Redirect to frontend after login
+## Admin custom list table added
+## Custom Role and Capability extended
+After installing, this plugin will create a custom role. User registered by this plugin powered Registration form, user will get this custom role by default.
+## Custom Registration login and redirection
+After registration user will be able to login and will redirected to the same page from user wanted to submit the listing.
+## No post found message with Ajax
 ## After submit the service will be in under review by admin
-## If service status is private, need to show it in frontend list
+By default, after submit a Service, it will be in private mode and once an admin review and publish it only then it will be public.
